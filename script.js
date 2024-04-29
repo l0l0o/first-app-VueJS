@@ -9,8 +9,8 @@ const vm = createApp({
   methods: {
     increase(id) {
       console.log("Increase likes for post with id: ", id);
-      this.postList.find((post) => post.id === id);
-      this.post.like += 1;
+      const post = this.postList.find((post) => post.id === id);
+      post.like += 1;
     },
   },
   data() {
