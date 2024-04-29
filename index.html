@@ -8,6 +8,8 @@
   </head>
   <body>
     <div id="app">
+      <form-component :handlesubmit="handleSubmit"></form-component>
+
       <ul v-for="postItem in postList">
         <card-post
           :id="postItem.id"
@@ -15,7 +17,7 @@
           :image_url="postItem.image_url"
           :content="postItem.content"
           :like="postItem.like"
-          :increase="increase(postItem.id)"
+          :increase="increase"
         ></card-post>
       </ul>
     </div>
