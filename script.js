@@ -14,35 +14,29 @@ const vm = createApp({
       const post = this.postList.find((post) => post.id === id);
       post.like += 1;
     },
+
+    handleSubmit(title, content) {
+      const newPost = {
+        id: this.postList.length + 1,
+        title: title,
+        content: content,
+        image_url: "https://picsum.photos/200/300",
+        like: 0,
+      };
+      this.postList.push(newPost);
+    },
   },
   data() {
     return {
-      postList: [
-        {
-          id: 1,
-          image_url:
-            "https://images.pexels.com/photos/19987317/pexels-photo-19987317/free-photo-of-art-motif-architecture-luxe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          title: "title 1",
-          content: "content 1",
-          like: 0,
-        },
-        {
-          id: 2,
-          image_url:
-            "https://images.pexels.com/photos/19987317/pexels-photo-19987317/free-photo-of-art-motif-architecture-luxe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          title: "title 2",
-          content: "content 2",
-          like: 0,
-        },
-        {
-          id: 3,
-          image_url:
-            "https://images.pexels.com/photos/19987317/pexels-photo-19987317/free-photo-of-art-motif-architecture-luxe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          title: "title 3",
-          content: "content 3",
-          like: 0,
-        },
-      ],
+      postList: [],
     };
+  },
+  mounted() {
+    console.log("App mounted");
+    fetch("data.json")
+      .then((response) => response.json())
+      .then((data) => {
+        this.postList = data;
+      });
   },
 }).mount("#app");

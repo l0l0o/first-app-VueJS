@@ -2,9 +2,9 @@ export const CardItem = {
   template: `
       <li :key="id">
           <h2>{{title}}</h2>
-          <img v-bind:src="image_url" alt="" />
+          <img :src="image_url" alt="" />
           <p>{{content}}</p>
-          <button @:click="increase()">
+          <button @:click="increase(id)">
               {{like}} Like{{like > 1 ? 's' : ''}}
           </button>
       </li>
