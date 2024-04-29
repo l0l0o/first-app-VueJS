@@ -1,7 +1,7 @@
 export const FormComponent = {
   data() {
     return {
-      title: "",
+      title: "a",
       content: "",
     };
   },
